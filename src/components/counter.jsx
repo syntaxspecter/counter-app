@@ -3,38 +3,32 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './css/counter.css';
 
 class Counter extends React.Component {
-    state=
-    {
-     count : 0 ,
-     tags : ["tag1" , "tag2" , "tag3"]
-    };
+    
 
-    consolePrint = () =>
-    {
-        this.setState({count:this.state.count + 1});
-        console.log(this.state.count);
-    }
+
 
     formatCounter()
     {
-        if (this.state.count===0) return "Zero";
-        return this.state.count;
+        if (this.props.counter.value===0) return "Zero";
+        return this.props.counter.value;
     }
 
     
     render() { 
 
+        
         return (
             <div>
                <span className ={this.getBadge()}>{this.formatCounter()}</span>   
-               <button className='btn btn-secondary m-2' onClick={this.consolePrint}>Increase</button>
+               <button className='btn btn-secondary m-2' onClick={ () => this.props.onIncrement(this.props.counter)}>Increase</button>
+               <button onClick={ () => this.props.onDelete(this.props.counter.id)} className="btn btn-danger btn-sm m-2">Delete</button>
             </div>
      ); 
     }
 
     getBadge()
     {
-        return (this.state.count===0) ? "label" : "badge badge-secondary m-2" ;
+        return (this.props.counter.value===0) ? "label" : "badge badge-secondary m-2" ;
       
     }
    
