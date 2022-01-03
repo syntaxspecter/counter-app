@@ -13,6 +13,12 @@ class Counter extends React.Component {
         return this.props.counter.value;
     }
 
+    getBadge()
+    {
+        return (this.props.counter.value===0) ? "label" : "badge badge-secondary m-2" ;
+      
+    }
+   
     
     render() { 
 
@@ -26,11 +32,6 @@ class Counter extends React.Component {
      ); 
     }
 
-    getBadge()
-    {
-        return (this.props.counter.value===0) ? "label" : "badge badge-secondary m-2" ;
-      
-    }
    
 }
  
